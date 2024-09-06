@@ -1,3 +1,5 @@
 streamlit
 opencv-python
 paho-mqtt
+pandas
+networkx
