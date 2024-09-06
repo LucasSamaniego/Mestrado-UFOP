@@ -3,3 +3,4 @@ opencv-python
 paho-mqtt
 pandas
 networkx
+pyzbar
