@@ -4,3 +4,4 @@ paho-mqtt
 pandas
 networkx
 pyzbar
+picamera2
