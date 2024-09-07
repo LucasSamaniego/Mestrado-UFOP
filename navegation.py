@@ -90,7 +90,7 @@ def map(destino):
                 
                 # Calculando a próxima direção a ser seguida
                 proxima_direcao = calcular_direcoes(nodos, G, pos_usuario, destino)
-                display(proxima_direcao) # CRIAR FUNÇÃO PARA MOSTRAR A SETA DE DIREÇÃO NO DISPLAY
+                display.show(proxima_direcao) # CRIAR FUNÇÃO PARA MOSTRAR A SETA DE DIREÇÃO NO DISPLAY
                  
                 # Atualizando a última posição
                 ultima_posicao = pos_usuario
