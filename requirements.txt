@@ -6,3 +6,4 @@ networkx
 pyzbar
 libzbar-dev
 picamera2
+libgl1-mesa-glx
