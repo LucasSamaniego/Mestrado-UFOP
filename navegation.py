@@ -94,6 +94,6 @@ def map(destino):
                  
                 # Atualizando a última posição
                 ultima_posicao = pos_usuario
-
+                picam2.close()
                 return pos_usuario
-    picam2.close()
+    
