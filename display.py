@@ -40,6 +40,5 @@ def show(direcao):
     except KeyboardInterrupt:
         logging.info("ctrl + c:")
         disp.module_exit()
-        exit()
 
 
