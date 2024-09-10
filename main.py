@@ -4,12 +4,11 @@ import navegation as navy
 
 # Título do Dashboard
 st.title("Gestão de armazém")
+destino = st.text_input("Destino")
 
 # Criar o botão
 if st.button("Modo Navegação"):
     # Chamar a função quando o botão for clicado
-    destino = st.text_input("Destino")
-    #destino = "SalaB"
     atual = None
 
     while atual != destino:
