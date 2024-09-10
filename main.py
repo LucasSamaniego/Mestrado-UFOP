@@ -8,16 +8,14 @@ st.title("Gestão de armazém")
 destino = st.text_input("Destino")
 
 if st.button("Sair Modo Navegação"):
-    sair = True
     navy.off()
 
 # Criar o botão
 if st.button("Modo Navegação"):
     # Chamar a função quando o botão for clicado
     atual = None
-    sair = False
 
-    while atual != destino and sair == False:
+    while atual != destino:
         atual = navy.map(destino)
         st.write(atual)
     

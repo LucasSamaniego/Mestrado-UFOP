@@ -37,70 +37,73 @@ def calcular_direcoes(nodos, G, pos_usuario, destino):
 
 #Função principal
 def map(destino):
+    try:    
+        # Criando um grafo
+        G = nx.Graph()
 
-    # Criando um grafo
-    G = nx.Graph()
+        # Adicionando nodos ao grafo com coordenadas (x, y)
+        nodos = {
+            "Entrada": (0, 0),
+            "Corredor1": (5, 0),
+            "Corredor2": (10, 0),
+            "SalaA": (5, 5),
+            "SalaB": (10, 5)
+        }
 
-    # Adicionando nodos ao grafo com coordenadas (x, y)
-    nodos = {
-        "Entrada": (0, 0),
-        "Corredor1": (5, 0),
-        "Corredor2": (10, 0),
-        "SalaA": (5, 5),
-        "SalaB": (10, 5)
-    }
+        for nodo, pos in nodos.items():
+            G.add_node(nodo, pos=pos)
 
-    for nodo, pos in nodos.items():
-        G.add_node(nodo, pos=pos)
+        # Adicionando arestas manualmente conforme a primeira versão
+        arestas = [
+            ("Entrada", "Corredor1"),
+            ("Corredor1", "Corredor2"),
+            ("Corredor1", "SalaA"),
+            ("Corredor2", "SalaB")
+        ]
 
-    # Adicionando arestas manualmente conforme a primeira versão
-    arestas = [
-        ("Entrada", "Corredor1"),
-        ("Corredor1", "Corredor2"),
-        ("Corredor1", "SalaA"),
-        ("Corredor2", "SalaB")
-    ]
+        for aresta in arestas:
+            nodo1, nodo2 = aresta
+            G.add_edge(nodo1, nodo2, weight=5)
 
-    for aresta in arestas:
-        nodo1, nodo2 = aresta
-        G.add_edge(nodo1, nodo2, weight=5)
+        # Variável para rastrear a última posição do usuário
+        ultima_posicao = None
 
-    # Variável para rastrear a última posição do usuário
-    ultima_posicao = None
+        # Configurando a câmera com Picamera2
+        picam2 = Picamera2()
+        config = picam2.create_preview_configuration()
+        picam2.configure(config)
+        picam2.start()
 
-    # Configurando a câmera com Picamera2
-    picam2 = Picamera2()
-    config = picam2.create_preview_configuration()
-    picam2.configure(config)
-    picam2.start()
+        print("Lendo QR Code...")
+        pos_usuario = None
 
-    print("Lendo QR Code...")
-    pos_usuario = None
+        while pos_usuario == None:
+            # Capturando o frame da câmera
+            frame = picam2.capture_array()
+                
+            # Convertendo a imagem para o formato correto
+            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-    while pos_usuario == None:
-        # Capturando o frame da câmera
-        frame = picam2.capture_array()
-            
-        # Convertendo a imagem para o formato correto
-        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            # Lendo o QR Code
+            pos_usuario = ler_qr_code(frame_rgb)
+        
+        picam2.close()
 
-        # Lendo o QR Code
-        pos_usuario = ler_qr_code(frame_rgb)
-    
-    picam2.close()
-
-    if pos_usuario != destino:
-        if pos_usuario in G.nodes:
-            #if pos_usuario != ultima_posicao:
-            print(f"\nPosição atual do usuário: {pos_usuario}")
-                        
-            # Calculando a próxima direção a ser seguida
-            proxima_direcao = calcular_direcoes(nodos, G, pos_usuario, destino)
-            display.show(proxima_direcao) # CRIAR FUNÇÃO PARA MOSTRAR A SETA DE DIREÇÃO NO DISPLAY
-                        
+        if pos_usuario != destino:
+            if pos_usuario in G.nodes:
+                #if pos_usuario != ultima_posicao:
+                print(f"\nPosição atual do usuário: {pos_usuario}")
+                            
+                # Calculando a próxima direção a ser seguida
+                proxima_direcao = calcular_direcoes(nodos, G, pos_usuario, destino)
+                display.show(proxima_direcao) # CRIAR FUNÇÃO PARA MOSTRAR A SETA DE DIREÇÃO NO DISPLAY
+                            
+                return pos_usuario
+        else:
             return pos_usuario
-    else:
-        return pos_usuario
+    except KeyboardInterrupt:
+        logging.info("ctrl + c:")
+        picam2.close()
     
 def off():
     picam2 = Picamera2()
