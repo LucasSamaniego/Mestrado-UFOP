@@ -76,6 +76,7 @@ def map(destino):
 
     while pos_usuario != destino:
         # Capturando o frame da câmera
+        picam2.start()
         frame = picam2.capture_array()
         
         # Convertendo a imagem para o formato correto
