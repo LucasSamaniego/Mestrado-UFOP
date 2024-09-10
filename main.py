@@ -1,6 +1,7 @@
 import streamlit as st
 import detail
 import navegation as navy
+import display
 
 # Título do Dashboard
 st.title("Gestão de armazém")
@@ -20,4 +21,10 @@ if st.button("Modo Detalhamento"):
 
     pn = st.text_input("Part Number")
     sn = st.text_input("Serial Number")
+    st.write("Enviado")
+
+
+if st.button("Ligar display"):
+
+    display.show("Direita")
     st.write("Enviado")
