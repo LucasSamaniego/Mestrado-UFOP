@@ -78,29 +78,26 @@ def map(destino):
     pos_usuario = None
 
     while pos_usuario == None:
-        if pos_usuario != destino:
-            # Capturando o frame da câmera
-            frame = picam2.capture_array()
+        # Capturando o frame da câmera
+        frame = picam2.capture_array()
             
-            # Convertendo a imagem para o formato correto
-            frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        # Convertendo a imagem para o formato correto
+        frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-            # Lendo o QR Code
-            pos_usuario = ler_qr_code(frame_rgb)
+        # Lendo o QR Code
+        pos_usuario = ler_qr_code(frame_rgb)
 
+        if pos_usuario != destino:
             if pos_usuario in G.nodes:
                 #if pos_usuario != ultima_posicao:
                 print(f"\nPosição atual do usuário: {pos_usuario}")
-                    
+                        
                 # Calculando a próxima direção a ser seguida
                 proxima_direcao = calcular_direcoes(nodos, G, pos_usuario, destino)
                 display.show(proxima_direcao) # CRIAR FUNÇÃO PARA MOSTRAR A SETA DE DIREÇÃO NO DISPLAY
-                    
-                # Atualizando a última posição
-                #ultima_posicao = pos_usuario
+                        
                 picam2.close()
                 return pos_usuario
-                #return proxima_direcao
         else:
             picam2.close()
             return pos_usuario

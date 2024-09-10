@@ -15,6 +15,8 @@ if st.button("Modo Navegação"):
     while atual != destino:
         atual = navy.map(destino)
         st.write(atual)
+    
+    st.write("Chegou ao destino!")
 
 
 if st.button("Modo Detalhamento"):
