@@ -6,7 +6,7 @@ import cv2
 import display
 import logging
 # Configura o logging para suprimir mensagens de info e debug
-logging.basicConfig(level=logging.ERROR)
+logging.getLogger('picamera2').setLevel(logging.WARNING)
 
 # Função para determinar a direção com base nas coordenadas
 def calcular_direcao(pos1, pos2):
