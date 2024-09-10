@@ -4,6 +4,9 @@ from picamera2 import Picamera2
 import numpy as np
 import cv2
 import display
+import logging
+# Configura o logging para suprimir mensagens de info e debug
+logging.basicConfig(level=logging.ERROR)
 
 # Função para determinar a direção com base nas coordenadas
 def calcular_direcao(pos1, pos2):
