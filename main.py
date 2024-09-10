@@ -9,6 +9,7 @@ destino = st.text_input("Destino")
 
 if st.button("Sair Modo Navegação"):
     sair = True
+    navy.off()
 
 # Criar o botão
 if st.button("Modo Navegação"):

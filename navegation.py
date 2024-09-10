@@ -102,3 +102,6 @@ def map(destino):
             picam2.close()
             return pos_usuario
     
+def off():
+    picam2 = Picamera2()
+    picam2.close()
