@@ -77,7 +77,7 @@ def map(destino):
         print("Lendo QR Code...")
         pos_usuario = None
 
-        while pos_usuario == None:
+        while not(pos_usuario in G.nodes):
             # Capturando o frame da câmera
             frame = picam2.capture_array()
                 
