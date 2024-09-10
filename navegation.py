@@ -90,6 +90,7 @@ def map(destino):
         picam2.close()
 
         if pos_usuario != destino:
+            print(pos_usuario)
             if pos_usuario in G.nodes:
                 #if pos_usuario != ultima_posicao:
                 print(f"\nPosição atual do usuário: {pos_usuario}")

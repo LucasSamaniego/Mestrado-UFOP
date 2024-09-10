@@ -13,7 +13,7 @@ if st.button("Sair Modo Navegação"):
 # Criar o botão
 if st.button("Modo Navegação"):
     # Chamar a função quando o botão for clicado
-    atual = None
+    atual = "inicio"
 
     while atual != destino:
         atual = navy.map(destino)
