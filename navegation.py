@@ -86,19 +86,17 @@ def map(destino):
 
             # Lendo o QR Code
             pos_usuario = ler_qr_code(frame_rgb)
-            print(pos_usuario)
         
         picam2.close()
 
         if pos_usuario != destino:
             print(pos_usuario)
             if pos_usuario in G.nodes:
-                #if pos_usuario != ultima_posicao:
                 print(f"\nPosição atual do usuário: {pos_usuario}")
                             
                 # Calculando a próxima direção a ser seguida
                 proxima_direcao = calcular_direcoes(nodos, G, pos_usuario, destino)
-                display.show(proxima_direcao) # CRIAR FUNÇÃO PARA MOSTRAR A SETA DE DIREÇÃO NO DISPLAY
+                display.show(proxima_direcao) #FUNÇÃO PARA MOSTRAR A SETA DE DIREÇÃO NO DISPLAY
                             
                 return pos_usuario
         else:
