@@ -34,19 +34,11 @@ def show(direcao):
         draw.line([(0,63),(127,63)], fill = 0)
         draw.line([(127,0),(127,63)], fill = 0)
         logging.info ("Escrevendo texto...")
-        draw.text((30,0), 'Direita ', font = font1, fill = 0)
+        draw.text((30,0), direcao, font = font1, fill = 0)
         #draw.text((10,24), 'Samaniego', font = font1, fill = 0)
         image1 = image1.rotate(0)
         disp.ShowImage(disp.getbuffer(image1))
         time.sleep(5)
-
-        logging.info ("Desenhando imagem...")
-        Himage2 = Image.new('1', (disp.width, disp.height), 255)  # 255: clear the frame
-        bmp = Image.open(os.path.join(picdir, '0in96.bmp'))
-        Himage2.paste(bmp, (0,0))
-        Himage2=Himage2.rotate(0)
-        disp.ShowImage(disp.getbuffer(Himage2))
-        time.sleep(3)
         disp.clear()
 
     except IOError as e:
