@@ -86,7 +86,8 @@ def map(destino):
 
         # Lendo o QR Code
         pos_usuario = ler_qr_code(frame_rgb)
-        print(pos_usuario)
+    
+    picam2.close()
 
     if pos_usuario != destino:
         if pos_usuario in G.nodes:
@@ -97,10 +98,8 @@ def map(destino):
             proxima_direcao = calcular_direcoes(nodos, G, pos_usuario, destino)
             display.show(proxima_direcao) # CRIAR FUNÇÃO PARA MOSTRAR A SETA DE DIREÇÃO NO DISPLAY
                         
-            picam2.close()
             return pos_usuario
     else:
-        picam2.close()
         return pos_usuario
     
 def off():
