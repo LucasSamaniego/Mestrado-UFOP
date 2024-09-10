@@ -101,8 +101,7 @@ def map(destino):
                 return pos_usuario
         else:
             return pos_usuario
-    except KeyboardInterrupt:
-        logging.info("ctrl + c:")
+    finally:
         picam2.close()
     
 def off():
