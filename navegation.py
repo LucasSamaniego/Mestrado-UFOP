@@ -99,4 +99,6 @@ def map(destino):
             else:
                 picam2.close()
                 return pos_usuario
+        else:
+            picam2.close()
     
