@@ -8,7 +8,8 @@ st.title("Gestão de armazém")
 # Criar o botão
 if st.button("Modo Navegação"):
     # Chamar a função quando o botão for clicado
-    destino = "SalaB"
+    destino = st.text_input("Destino")
+    #destino = "SalaB"
     atual = None
 
     while atual != destino:
@@ -18,6 +19,6 @@ if st.button("Modo Navegação"):
 
 if st.button("Modo Detalhamento"):
 
-    pn = st.text_input("Part Number", "PN")
-    sn = st.text_input("Serial Number", "SN")
-    st.write("The current movie title is", title)
+    pn = st.text_input("Part Number")
+    sn = st.text_input("Serial Number")
+    st.write("Enviado")
