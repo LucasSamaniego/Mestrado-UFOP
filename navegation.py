@@ -86,6 +86,7 @@ def map(destino):
 
             # Lendo o QR Code
             pos_usuario = ler_qr_code(frame_rgb)
+            print(pos_usuario)
         
         picam2.close()
 
