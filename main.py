@@ -14,7 +14,7 @@ if st.button("Sair Modo Navegação"):
 if st.button("Modo Navegação"):
     # Chamar a função quando o botão for clicado
     atual = None
-    sair == False
+    sair = False
 
     while atual != destino and sair == False:
         atual = navy.map(destino)
