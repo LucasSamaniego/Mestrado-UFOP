@@ -5,6 +5,8 @@ import sys
 import os
 picdir = "/home/samaniego/OLED_Module_Code/RaspberryPi/python/pic"
 libdir = "/home/samaniego/OLED_Module_Code/RaspberryPi/python/lib"
+if os.path.exists(libdir):
+    sys.path.append(libdir)
 
 import logging
 import time
@@ -27,6 +29,11 @@ try:
     image1 = Image.new('1', (disp.width, disp.height), "WHITE")
     draw = ImageDraw.Draw(image1)
     font1 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 30)
+    #font2 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 24)
+    logging.info ("Desenhando linha...")    
+    draw.line([(0,0),(127,0)], fill = 0)
+    draw.line([(0,63),(127,63)], fill = 0)
+    draw.line([(127,0),(127,63)], fill = 0)
     logging.info ("Escrevendo texto...")
     draw.text((30,0), 'Direita ', font = font1, fill = 0)
     #draw.text((10,24), 'Samaniego', font = font1, fill = 0)
